@@ -93,23 +93,6 @@
 
     <script>
         let allFiles = [];
-        
-        // This would be populated by your Lambda function or API
-        // For now, I'll show you the structure
-        const sampleFiles = [
-            {
-                name: "wedding-photos-2023.zip",
-                path: "drivesync/Events/Weddings/wedding-photos-2023.zip",
-                size: "15.2 MB",
-                url: "https://your-bucket.s3.amazonaws.com/drivesync/Events/Weddings/wedding-photos-2023.zip"
-            },
-            {
-                name: "holiday-service-program.pdf",
-                path: "drivesync/Documents/Programs/holiday-service-program.pdf", 
-                size: "2.1 MB",
-                url: "https://your-bucket.s3.amazonaws.com/drivesync/Documents/Programs/holiday-service-program.pdf"
-            }
-        ];
 
         // Replace this URL with your actual API Gateway URL
         const API_URL = 'https://zab4w6cwg2.execute-api.us-east-1.amazonaws.com/prod/files';
