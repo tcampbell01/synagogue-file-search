@@ -111,12 +111,22 @@
             }
         ];
 
+        // Replace this URL with your actual API Gateway URL
+        const API_URL = 'https://zab4w6cwg2.execute-api.us-east-1.amazonaws.com/prod/files';
+        
         function loadFiles() {
-            // In production, this would call your Lambda function to get real file list
-            // For demo, using sample data
-            allFiles = sampleFiles;
-            displayFiles(allFiles);
-            updateStats(allFiles.length, allFiles.length);
+            fetch(API_URL)
+                .then(response => response.json())
+                .then(data => {
+                    allFiles = data.files;
+                    displayFiles(allFiles);
+                    updateStats(allFiles.length, allFiles.length);
+                })
+                .catch(error => {
+                    console.error('Error loading files:', error);
+                    document.getElementById('fileList').innerHTML = 
+                        '<div class="loading">Error loading files. Please try again later.</div>';
+                });
         }
 
         function displayFiles(files) {
