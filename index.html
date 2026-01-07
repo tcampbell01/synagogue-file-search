@@ -36,9 +36,6 @@
         .file-item {
             padding: 15px;
             border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
         .file-item:hover {
             background-color: #f8f9fa;
@@ -147,7 +144,6 @@
                         <div class="file-name">${file.name}</div>
                         <div class="file-path">${file.path}</div>
                     </div>
-                    <a href="${file.url}" class="download-btn" download>Download</a>
                 </div>
             `).join('');
         }
