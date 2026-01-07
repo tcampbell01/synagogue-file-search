@@ -98,8 +98,13 @@
         const API_URL = 'https://zab4w6cwg2.execute-api.us-east-1.amazonaws.com/prod/files';
         
         function loadFiles() {
+            console.log('Starting to load files from:', API_URL);
             fetch(API_URL)
-                .then(response => response.json())
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    console.log('Response headers:', response.headers);
+                    return response.json();
+                })
                 .then(data => {
                     console.log('API Response:', data); // Debug log
                     // Handle the nested response structure
@@ -114,10 +119,12 @@
                         // Fallback
                         allFiles = [];
                     }
+                    console.log('Parsed files:', allFiles);
                     displayFiles(allFiles);
                     updateStats(allFiles.length, allFiles.length);
                 })
                 .catch(error => {
+                    console.error('Fetch error details:', error);
                     console.error('Error loading files:', error);
                     document.getElementById('fileList').innerHTML = 
                         '<div class="loading">Error loading files. Please try again later.</div>';
