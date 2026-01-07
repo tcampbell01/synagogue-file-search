@@ -101,7 +101,19 @@
             fetch(API_URL)
                 .then(response => response.json())
                 .then(data => {
-                    allFiles = data.files;
+                    console.log('API Response:', data); // Debug log
+                    // Handle the nested response structure
+                    if (data.body) {
+                        // API Gateway returns body as string, need to parse it
+                        const bodyData = JSON.parse(data.body);
+                        allFiles = bodyData.files || [];
+                    } else if (data.files) {
+                        // Direct response
+                        allFiles = data.files;
+                    } else {
+                        // Fallback
+                        allFiles = [];
+                    }
                     displayFiles(allFiles);
                     updateStats(allFiles.length, allFiles.length);
                 })
