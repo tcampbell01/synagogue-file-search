@@ -1,4 +1,4 @@
-# synagogue-file-search
+# Synagogue-file-search
 
 AWS Lambda function that provides a web API to search and browse files stored in an S3 bucket. Originally designed for synagogue document management, this service lists files from the `google-drivesync-backup` bucket and provides downloadable links with file metadata.
 
