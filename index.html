@@ -127,7 +127,9 @@
         function displayFiles(files) {
             const fileList = document.getElementById('fileList');
             
-            if (files.length === 0) {
+            console.log('displayFiles called with:', files); // Debug log
+            
+            if (!files || files.length === 0) {
                 fileList.innerHTML = '<div class="loading">No files found matching your search.</div>';
                 return;
             }
